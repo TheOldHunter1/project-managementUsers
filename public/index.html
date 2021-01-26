@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node|GoogleSign-In</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="38457011505-np20b0c357tm141chper88h2ue1ovc7u.apps.googleusercontent.com">
+</head>
+
+<body>
+
+    <!-- <img src="localhost:3000/imagen/productos/6000efa4bf3c0074c3e8a3d0-688.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiZXN0YWRvIjp0cnVlLCJfaWQiOiI1ZmZjZWRkZTQ3MDEyMTEwZjhmOWNjMmQiLCJub21icmUiOiJ0ZXN0MCIsImVtYWlsIjoidGVzdDBAZ21haWwuY29tIiwiZ29vZ2xlIjpmYWxzZSwiX192IjowfSwiaWF0IjoxNjEwNjcyNzYwLCJleHAiOjE2MTA4NDU1NjB9.fR6jwa2mAco5GKyrJuY8xePpDZYOk1aZbQKliVhCv8Y"> -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <br>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+            var id_token = googleUser.getAuthResponse().id_token;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/googleSigIn');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                console.log('Signed in as: ' + xhr.responseText);
+            };
+            xhr.send('idtoken=' + id_token);
+
+        }
+    </script>
+</body>
+
+</html>

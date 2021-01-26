@@ -1,0 +1,24 @@
+{
+    "name": "proyecto-usuarios",
+    "version": "1.0.0",
+    "description": "proyecto simplecon un crud de usuarios, API hechas con express y front end en VueJS",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Luis Arias Alarcón",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.2.1",
+        "google-auth-library": "^6.1.4",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.11.11",
+        "mongoose-unique-validator": "^2.0.3",
+        "request": "^2.88.2",
+        "save": "^2.4.0",
+        "underscore": "^1.12.0"
+    }
+}
