@@ -4,6 +4,7 @@
     "description": "proyecto simplecon un crud de usuarios, API hechas con express y front end en VueJS",
     "main": "index.js",
     "scripts": {
+        "start": "node server/server",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Luis Arias Alarcón",
